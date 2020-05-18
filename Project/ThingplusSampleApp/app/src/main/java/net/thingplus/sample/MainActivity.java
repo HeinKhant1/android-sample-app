@@ -45,6 +45,10 @@ import static net.thingplus.sample.utils.Constants.ONE_SECOND;
 import static net.thingplus.sample.utils.Constants.QUERY_ACCEPT_OAUTH_CODE;
 import static net.thingplus.sample.utils.Constants.QUERY_DENY_OAUTH_CODE;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 public class MainActivity extends AppCompatActivity {
     private RelativeLayout mInitScreen;
     private RelativeLayout mSignInScreen;
@@ -62,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppCenter.start(getApplication(), "38b1dfaa-a656-4a62-8f2d-878607a54ed5",
+        Analytics.class, Crashes.class);
         Button signInBtn = (Button) findViewById(R.id.sign_in_btn);
         signInBtn.setOnClickListener(new SignInBtnListener());
 
